@@ -92,7 +92,9 @@ class PetManager {
                 universe: { name: 'Universe Seed', icon: 'bi bi-globe', basePrice: 1500000000, growthTime: 130, rarity: 'Cosmic' }
             }
         };
- getAllPetTypes() {
+    }
+    
+    getAllPetTypes() {
         const allTypes = [];
         Object.values(this.petTypes).forEach(rarityGroup => {
             Object.entries(rarityGroup).forEach(([key, pet]) => {
