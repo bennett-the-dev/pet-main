@@ -92,5 +92,140 @@ class PetManager {
                 universe: { name: 'Universe Seed', icon: 'bi bi-globe', basePrice: 1500000000, growthTime: 130, rarity: 'Cosmic' }
             }
         };
+ getAllPetTypes() {
+        const allTypes = [];
+        Object.values(this.petTypes).forEach(rarityGroup => {
+            Object.entries(rarityGroup).forEach(([key, pet]) => {
+                allTypes.push({ ...pet, id: key });
+            });
+        });
+        return allTypes;
+    }
+    
+    getPetTypeById(id) {
+        for (const rarityGroup of Object.values(this.petTypes)) {
+            if (rarityGroup[id]) {
+                return { ...rarityGroup[id], id };
+            }
+        }
+        return null;
+    }
+    
+    createPet(typeId) {
+        const petType = this.getPetTypeById(typeId);
+        if (!petType) return null;
+        
+        return {
+            id: this.generateId(),
+            type: typeId,
+            age: 0,
+            isGolden: false,
+            isRainbow: false,
+            placedAt: Date.now(),
+            lastUpdate: Date.now(),
+            buffs: {
+                foodMultiplier: 1,
+                speedMultiplier: 1
+            }
+        };
+    }
+    
+    calculatePetValue(pet) {
+        const petType = this.getPetTypeById(pet.type);
+        if (!petType) return 0;
+        
+        let baseValue = petType.basePrice;
+        
+        // Age additive bonus (adds value per year instead of multiplying)
+        if (pet.age >= 5) {
+            baseValue += petType.basePrice * 0.3 * (pet.age - 4); // 30% of base price per year after maturity
+        } else {
+            baseValue *= 0.5; // Young pets are worth less
+        }
+        
+        // Apply food buffs
+        if (pet.buffs && pet.buffs.foodMultiplier) {
+            baseValue *= pet.buffs.foodMultiplier;
+        }
+        
+        // Special transformations
+        if (pet.isRainbow) {
+            baseValue *= 150;
+        } else if (pet.isGolden) {
+            baseValue *= 50;
+        }
+        
+        return Math.floor(baseValue);
+    }
+    
+    updatePetAge(pet, secondsElapsed) {
+        const petType = this.getPetTypeById(pet.type);
+        if (!petType) return;
+        
+        // Initialize buffs if not present
+        if (!pet.buffs) {
+            pet.buffs = { foodMultiplier: 1, speedMultiplier: 1 };
+        }
+        
+        // Apply speed buffs to growth
+        const buffedSecondsElapsed = secondsElapsed * (pet.buffs.speedMultiplier || 1);
+        
+        // Make all pets grow 5x faster (1/5th the time)
+        const currentYear = Math.floor(pet.age);
+        const agingSlowdown = Math.pow(1.5, currentYear);
+        const adjustedGrowthTime = (petType.growthTime * agingSlowdown) * 0.2; // 1/5th the time
+        const ageGrowthRate = 1 / adjustedGrowthTime;
+        const ageIncrease = buffedSecondsElapsed * ageGrowthRate;
+        pet.age += ageIncrease;
+        
+        // Check for transformations (only if not already transformed)
+        if (!pet.isRainbow && !pet.isGolden) {
+            // Rainbow transformation (rarer, but better)
+            if (Math.random() < (secondsElapsed / 60) / 750) {
+                pet.isRainbow = true;
+                return 'rainbow';
+            }
+            // Golden transformation
+            else if (Math.random() < (secondsElapsed / 60) / 250) {
+                pet.isGolden = true;
+                return 'golden';
+            }
+        }
+        
+        return null; // No transformation
+    }
+    
+    getPetDisplayInfo(pet) {
+        const petType = this.getPetTypeById(pet.type);
+        if (!petType) return null;
+        
+        let icon = petType.icon;
+        let name = petType.name;
+        
+        if (pet.isRainbow) {
+            name = `🌈 ${name}`;
+        } else if (pet.isGolden) {
+            name = `✨ ${name}`;
+        }
+        
+        return {
+            icon,
+            name,
+            age: Math.floor(pet.age),
+            value: this.calculatePetValue(pet),
+            canSell: pet.age >= 5,
+            rarity: petType.rarity,
+            isGolden: pet.isGolden,
+            isRainbow: pet.isRainbow
+        };
+    }
+    
+    // Remove pet from ownedPets by id
+    removePetFromOwned(petId) {
+        this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== petId);
+    }
+    
+    generateId() {
+        return Math.random().toString(36).substr(2, 9);
     }
 }
