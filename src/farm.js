@@ -50,6 +50,7 @@ class FarmManager {
     }
 
     showPetSelection(plotId) {
+        // Only show pets that are not on the farm AND still exist in ownedPets (in case a pet was just sold)
         const availablePets = this.game.gameData.ownedPets.filter(pet => 
             !Object.values(this.game.gameData.farmPets).some(farmPet => farmPet.id === pet.id)
         );
@@ -89,11 +90,15 @@ class FarmManager {
     }
 
     placePet(plotId, pet) {
+        // Remove from ownedPets when placing on the farm
+        this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== pet.id);
         this.game.gameData.farmPets[plotId] = pet;
         pet.placedAt = Date.now();
         pet.lastUpdate = Date.now();
-        // Do NOT remove from ownedPets here! Only remove when selling or if you want to move from inventory to farm.
         this.updateDisplay();
+        if (this.game.inventoryManager && this.game.inventoryManager.updateDisplay) {
+            this.game.inventoryManager.updateDisplay();
+        }
         this.game.showNotification(`${this.game.petManager.getPetDisplayInfo(pet).name} placed on farm!`);
     }
 
@@ -170,6 +175,12 @@ class FarmManager {
 
         this.game.addMoney(petInfo.value);
         delete this.game.gameData.farmPets[plotId];
+        // Remove from ownedPets as well
+        if (this.game.petManager.removePetFromOwned) {
+            this.game.petManager.removePetFromOwned(pet.id);
+        } else {
+            this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== pet.id);
+        }
         this.updateDisplay();
         this.game.showNotification(`Sold ${petInfo.name} for $${petInfo.value}!`);
     }
