@@ -71,7 +71,7 @@ class PetManager {
             },
             mythical: {
                 omnipotent: { name: 'Omnipotent Being', icon: '🌌', basePrice: 1000000, growthTime: 300, rarity: 'Mythical' },
-                transcendent: { name: 'Transcendent Soul', icon: '👁️', basePrice: 165, growthTime: 15, rarity: 'Mythical' },
+                transcendent: { name: 'Transcendent Soul', icon: '👁️', basePrice: 2500000, growthTime: 285, rarity: 'Mythical' },
                 primordial: { name: 'Primordial Force', icon: '💫', basePrice: 5000000, growthTime: 290, rarity: 'Mythical' },
                 eternal: { name: 'Eternal Essence', icon: '♾️', basePrice: 7500000, growthTime: 310, rarity: 'Mythical' },
                 absolute: { name: 'Absolute Zero', icon: '❄️', basePrice: 10000000, growthTime: 320, rarity: 'Mythical' }
