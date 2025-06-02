@@ -50,7 +50,18 @@ class InventoryManager {
             }
             let iconHtml = petType.icon && petType.icon.startsWith('bi')
                 ? `<i class='${petType.icon}' style='color:${iconColor};font-size:2.5rem;'></i>`
-                : `<i class='bi bi-question-circle' style='color:#888;font-size:2.5rem;'></i>`;
+                : (() => {
+                    switch ((petType.id||petType.type||'').toLowerCase()) {
+                        case 'cat': return `<i class='bi bi-emoji-smile' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'dog': return `<i class='bi bi-emoji-laughing' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'fish': return `<i class='bi bi-fish' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'ancient': return `<i class='bi bi-hourglass-split' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'throne': return `<i class='bi bi-gem' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'angel': return `<i class='bi bi-sun' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'sun': return `<i class='bi bi-sun' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        default: return `<i class='bi bi-question-circle' style='color:#888;font-size:2.5rem;'></i>`;
+                    }
+                })();
             petElement.innerHTML = `
                 <div class='pet-icon d-flex justify-content-center align-items-center mb-2'>${iconHtml}</div>
                 <div class='pet-name'>${petType.name}</div>

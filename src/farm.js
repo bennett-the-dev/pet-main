@@ -271,7 +271,18 @@ class FarmManager {
             // Fallback for missing/placeholder icons
             let iconHtml = petInfo.icon && petInfo.icon.startsWith('bi')
                 ? `<i class="${petInfo.icon}" style="color:${iconColor}"></i>`
-                : `<i class="bi bi-question-circle" style="color:#888"></i>`;
+                : (() => {
+                    switch ((petInfo.id||petInfo.type||'').toLowerCase()) {
+                        case 'cat': return '<i class="bi bi-emoji-smile" style="color:'+iconColor+';"></i>';
+                        case 'dog': return '<i class="bi bi-emoji-laughing" style="color:'+iconColor+';"></i>';
+                        case 'fish': return '<i class="bi bi-fish" style="color:'+iconColor+';"></i>';
+                        case 'ancient': return '<i class="bi bi-hourglass-split" style="color:'+iconColor+';"></i>';
+                        case 'throne': return '<i class="bi bi-gem" style="color:'+iconColor+';"></i>';
+                        case 'angel': return '<i class="bi bi-sun" style="color:'+iconColor+';"></i>';
+                        case 'sun': return '<i class="bi bi-sun" style="color:'+iconColor+';"></i>';
+                        default: return '<i class="bi bi-question-circle" style="color:#888"></i>';
+                    }
+                })();
 
             plot.innerHTML = `
                 <div class="pet-sprite d-flex justify-content-center align-items-center" style="font-size:2.5rem;">${iconHtml}</div>

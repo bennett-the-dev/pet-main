@@ -195,7 +195,7 @@ class StoreManager {
                     case 'fish': iconClass = 'bi bi-fish'; break;
                     case 'ancient': iconClass = 'bi bi-hourglass-split'; break;
                     case 'throne': iconClass = 'bi bi-gem'; break;
-                    case 'angel': iconClass = 'bi bi-angel'; break;
+                    case 'angel': iconClass = 'bi bi-sun'; break;
                     case 'sun': iconClass = 'bi bi-sun'; break;
                 }
             }
