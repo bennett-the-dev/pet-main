@@ -41,7 +41,7 @@ class MarketManager {
             }
             
             petElement.innerHTML = `
-                <div class="pet-icon ${specialClass}">${petInfo.icon}</div>
+                <div class="pet-icon ${specialClass} d-flex justify-content-center align-items-center mb-2" style="font-size:2.5rem;"><i class="${petInfo.icon}"></i></div>
                 <div class="pet-name">${petInfo.name}</div>
                 <div class="pet-rarity">${petInfo.rarity}</div>
                 <div class="pet-age">Age: ${petInfo.age}</div>

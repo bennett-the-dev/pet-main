@@ -1,4 +1,3 @@
-
 class UtilityStoreManager {
     constructor(game) {
         this.game = game;
@@ -179,7 +178,7 @@ class UtilityStoreManager {
             const petElement = document.createElement('div');
             petElement.className = 'selectable-pet';
             petElement.innerHTML = `
-                <div class="pet-icon">${petInfo.icon}</div>
+                <div class="pet-icon d-flex justify-content-center align-items-center mb-2" style="font-size:2.5rem;"><i class="${petInfo.icon}"></i></div>
                 <div class="pet-name">${petInfo.name}</div>
                 <div class="pet-level">Level ${petInfo.age}</div>
             `;

@@ -173,9 +173,38 @@ class StoreManager {
         this.game.gameData.storeInventory.forEach(item => {
             const itemElement = document.createElement('div');
             itemElement.className = `store-item ${!item.inStock ? 'out-of-stock' : ''}`;
-            
+
+            // Color icons by rarity
+            let iconColor = '#888';
+            switch ((item.rarity||'').toLowerCase()) {
+                case 'common': iconColor = '#444'; break; // dark grey
+                case 'uncommon': iconColor = '#388e3c'; break; // darker green
+                case 'rare': iconColor = '#2196F3'; break;
+                case 'epic': iconColor = '#9C27B0'; break;
+                case 'legendary': iconColor = '#FFC107'; break;
+                case 'mythical': iconColor = '#E91E63'; break;
+                case 'divine': iconColor = '#00B8D4'; break;
+                case 'cosmic': iconColor = '#FF5722'; break;
+            }
+            // Always use a valid icon for known pets
+            let iconClass = item.icon;
+            if (!iconClass || !iconClass.startsWith('bi')) {
+                switch ((item.id||'').toLowerCase()) {
+                    case 'cat': iconClass = 'bi bi-emoji-smile'; break;
+                    case 'dog': iconClass = 'bi bi-emoji-laughing'; break;
+                    case 'fish': iconClass = 'bi bi-fish'; break;
+                    case 'ancient': iconClass = 'bi bi-hourglass-split'; break;
+                    case 'throne': iconClass = 'bi bi-gem'; break;
+                    case 'angel': iconClass = 'bi bi-angel'; break;
+                    case 'sun': iconClass = 'bi bi-sun'; break;
+                }
+            }
+            let iconHtml = iconClass && iconClass.startsWith('bi')
+                ? `<i class="${iconClass}" style="color:${iconColor};font-size:2.5rem;"></i>`
+                : `<i class="bi bi-question-circle" style="color:#888;font-size:2.5rem;"></i>`;
+
             itemElement.innerHTML = `
-                <div class="pet-icon">${item.icon}</div>
+                <div class="pet-icon d-flex justify-content-center align-items-center mb-2">${iconHtml}</div>
                 <div class="pet-name">${item.name}</div>
                 <div class="pet-rarity">${item.rarity}</div>
                 <div class="pet-price">$${item.basePrice}</div>

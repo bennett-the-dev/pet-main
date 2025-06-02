@@ -122,10 +122,17 @@ body {
     background: #f5f5f5;
 }
 
-.pet-icon {
-    font-size: 48px;
+.pet-icon, .pet-sprite {
+    font-size: 2.5rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
-    display: block;
+}
+
+.pet-icon i, .pet-sprite i {
+    font-size: inherit;
+    line-height: 1;
 }
 
 .pet-name {

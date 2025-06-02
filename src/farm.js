@@ -71,10 +71,26 @@ class FarmManager {
 
             const option = document.createElement('div');
             option.className = 'pet-option';
+
+            // Render icon as a Bootstrap icon, colored by rarity
+            let iconColor = '#888';
+            switch ((pet.rarity||'').toLowerCase()) {
+                case 'common': iconColor = '#444'; break; // dark grey
+                case 'uncommon': iconColor = '#388e3c'; break; // darker green
+                case 'rare': iconColor = '#2196F3'; break;
+                case 'epic': iconColor = '#9C27B0'; break;
+                case 'legendary': iconColor = '#FFC107'; break;
+                case 'mythical': iconColor = '#E91E63'; break;
+                case 'divine': iconColor = '#00B8D4'; break;
+                case 'cosmic': iconColor = '#FF5722'; break;
+            }
+            let iconHtml = pet.icon && pet.icon.startsWith('bi')
+                ? `<i class='${pet.icon}' style='color:${iconColor};font-size:2.5rem;'></i>`
+                : `<i class='bi bi-question-circle' style='color:#888;font-size:2.5rem;'></i>`;
             option.innerHTML = `
-                <div style="font-size: 24px;">${petInfo.icon}</div>
-                <div>${petInfo.name}</div>
-                <div style="font-size: 12px;">Age: ${petInfo.age}</div>
+                <div class='d-flex justify-content-center align-items-center mb-2'>${iconHtml}</div>
+                <div>${pet.name}</div>
+                <div style='font-size: 12px;'>Age: ${pet.age}</div>
             `;
 
             option.addEventListener('click', () => {
@@ -241,8 +257,24 @@ class FarmManager {
             const nextLevel = currentLevel + 1;
             const progressToNext = (pet.age - currentLevel) * 100;
 
+            let iconColor = '#888';
+            switch ((petInfo.rarity||'').toLowerCase()) {
+                case 'common': iconColor = '#8BC34A'; break;
+                case 'uncommon': iconColor = '#4CAF50'; break;
+                case 'rare': iconColor = '#2196F3'; break;
+                case 'epic': iconColor = '#9C27B0'; break;
+                case 'legendary': iconColor = '#FFC107'; break;
+                case 'mythical': iconColor = '#E91E63'; break;
+                case 'divine': iconColor = '#00B8D4'; break;
+                case 'cosmic': iconColor = '#FF5722'; break;
+            }
+            // Fallback for missing/placeholder icons
+            let iconHtml = petInfo.icon && petInfo.icon.startsWith('bi')
+                ? `<i class="${petInfo.icon}" style="color:${iconColor}"></i>`
+                : `<i class="bi bi-question-circle" style="color:#888"></i>`;
+
             plot.innerHTML = `
-                <div class="pet-sprite">${petInfo.icon}</div>
+                <div class="pet-sprite d-flex justify-content-center align-items-center" style="font-size:2.5rem;">${iconHtml}</div>
                 <div class="pet-info">
                     Lvl ${currentLevel} | $${petInfo.value}
                 </div>
@@ -258,7 +290,8 @@ class FarmManager {
                 const plot = document.querySelector(`[data-plot-id="${i}"]`);
                 if (plot) {
                     plot.className = 'farm-plot empty';
-                    plot.innerHTML = '';
+                    // Show a placeholder icon for empty plots
+                    plot.innerHTML = `<div class="pet-sprite d-flex justify-content-center align-items-center" style="font-size:2.5rem;"><i class='bi bi-plus-circle' style='color:#bbb'></i></div>`;
                 }
             }
         }

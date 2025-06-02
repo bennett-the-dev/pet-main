@@ -36,11 +36,26 @@ class InventoryManager {
                 specialClass = 'pet-golden';
             }
 
+            // Render icon as a Bootstrap icon, colored by rarity
+            let iconColor = '#888';
+            switch ((petType.rarity||'').toLowerCase()) {
+                case 'common': iconColor = '#8BC34A'; break;
+                case 'uncommon': iconColor = '#4CAF50'; break;
+                case 'rare': iconColor = '#2196F3'; break;
+                case 'epic': iconColor = '#9C27B0'; break;
+                case 'legendary': iconColor = '#FFC107'; break;
+                case 'mythical': iconColor = '#E91E63'; break;
+                case 'divine': iconColor = '#00B8D4'; break;
+                case 'cosmic': iconColor = '#FF5722'; break;
+            }
+            let iconHtml = petType.icon && petType.icon.startsWith('bi')
+                ? `<i class='${petType.icon}' style='color:${iconColor};font-size:2.5rem;'></i>`
+                : `<i class='bi bi-question-circle' style='color:#888;font-size:2.5rem;'></i>`;
             petElement.innerHTML = `
-                <div class="pet-icon ${specialClass}">${petType.icon}</div>
-                <div class="pet-name">${petType.name}</div>
-                <div class="pet-rarity">${petType.rarity}</div>
-                <div class="pet-status">${isOnFarm ? 'On Farm' : 'In Storage'}</div>
+                <div class='pet-icon d-flex justify-content-center align-items-center mb-2'>${iconHtml}</div>
+                <div class='pet-name'>${petType.name}</div>
+                <div class='pet-rarity'>${petType.rarity}</div>
+                <div class='pet-status'>${isOnFarm ? 'On Farm' : 'In Storage'}</div>
             `;
 
             inventoryContainer.appendChild(petElement);
