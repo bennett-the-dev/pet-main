@@ -1,4 +1,3 @@
-// Pet inventory management system
 class InventoryManager {
     constructor(game) {
         this.game = game;
@@ -36,7 +35,6 @@ class InventoryManager {
                 specialClass = 'pet-golden';
             }
 
-            // Render icon as a Bootstrap icon, colored by rarity
             let iconColor = '#888';
             switch ((petType.rarity||'').toLowerCase()) {
                 case 'common': iconColor = '#8BC34A'; break;
@@ -72,6 +70,4 @@ class InventoryManager {
             inventoryContainer.appendChild(petElement);
         });
     }
-
-    // Note: The placePetOnFarm method and any related functionality are removed now.
 }

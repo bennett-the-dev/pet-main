@@ -138,19 +138,16 @@ class PetManager {
         
         let baseValue = petType.basePrice;
         
-        // Age additive bonus (adds value per year instead of multiplying)
         if (pet.age >= 5) {
-            baseValue += petType.basePrice * 0.3 * (pet.age - 4); // 30% of base price per year after maturity
+            baseValue += petType.basePrice * 0.3 * (pet.age - 4);
         } else {
-            baseValue *= 0.5; // Young pets are worth less
+            baseValue *= 0.5;
         }
         
-        // Apply food buffs
         if (pet.buffs && pet.buffs.foodMultiplier) {
             baseValue *= pet.buffs.foodMultiplier;
         }
         
-        // Special transformations
         if (pet.isRainbow) {
             baseValue *= 150;
         } else if (pet.isGolden) {
@@ -164,37 +161,30 @@ class PetManager {
         const petType = this.getPetTypeById(pet.type);
         if (!petType) return;
         
-        // Initialize buffs if not present
         if (!pet.buffs) {
             pet.buffs = { foodMultiplier: 1, speedMultiplier: 1 };
         }
         
-        // Apply speed buffs to growth
         const buffedSecondsElapsed = secondsElapsed * (pet.buffs.speedMultiplier || 1);
         
-        // Make all pets grow 5x faster (1/5th the time)
         const currentYear = Math.floor(pet.age);
         const agingSlowdown = Math.pow(1.5, currentYear);
-        const adjustedGrowthTime = (petType.growthTime * agingSlowdown) * 0.2; // 1/5th the time
+        const adjustedGrowthTime = (petType.growthTime * agingSlowdown) * 0.2;
         const ageGrowthRate = 1 / adjustedGrowthTime;
         const ageIncrease = buffedSecondsElapsed * ageGrowthRate;
         pet.age += ageIncrease;
         
-        // Check for transformations (only if not already transformed)
         if (!pet.isRainbow && !pet.isGolden) {
-            // Rainbow transformation (rarer, but better)
             if (Math.random() < (secondsElapsed / 60) / 750) {
                 pet.isRainbow = true;
                 return 'rainbow';
-            }
-            // Golden transformation
-            else if (Math.random() < (secondsElapsed / 60) / 250) {
+            } else if (Math.random() < (secondsElapsed / 60) / 250) {
                 pet.isGolden = true;
                 return 'golden';
             }
         }
         
-        return null; // No transformation
+        return null;
     }
     
     getPetDisplayInfo(pet) {
@@ -222,7 +212,6 @@ class PetManager {
         };
     }
     
-    // Remove pet from ownedPets by id
     removePetFromOwned(petId) {
         this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== petId);
     }

@@ -1,4 +1,3 @@
-// Market management system
 class MarketManager {
     constructor(game) {
         this.game = game;
@@ -10,7 +9,6 @@ class MarketManager {
         
         marketInventory.innerHTML = '';
         
-        // Get all farm pets that can be sold (age 5+)
         const sellablePets = [];
         Object.entries(this.game.gameData.farmPets).forEach(([plotId, pet]) => {
             const petInfo = this.game.petManager.getPetDisplayInfo(pet);
@@ -93,14 +91,11 @@ class MarketManager {
             return;
         }
         
-        // Confirm sale
         const confirmed = confirm(`Sell ${petInfo.name} (Age ${petInfo.age}) for $${petInfo.value}?`);
         if (!confirmed) return;
         
-        // Add money
         this.game.addMoney(petInfo.value);
         
-        // Remove from farm and owned pets (use helper for ownedPets)
         delete this.game.gameData.farmPets[plotId];
         if (this.game.petManager.removePetFromOwned) {
             this.game.petManager.removePetFromOwned(pet.id);
@@ -108,7 +103,6 @@ class MarketManager {
             this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== pet.id);
         }
         
-        // Update displays
         this.updateDisplay();
         this.game.farmManager.updateDisplay();
         this.game.inventoryManager.updateDisplay();

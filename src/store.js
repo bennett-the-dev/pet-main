@@ -1,4 +1,3 @@
-// Store management system
 class StoreManager {
     constructor(game) {
         this.game = game;
@@ -39,7 +38,6 @@ class StoreManager {
         const now = new Date();
         const currentHour = now.getHours();
         const currentMinute = now.getMinutes();
-        // Create cycle based on 5-minute intervals (minute ending in 0 or 5)
         const minuteSlot = Math.floor(currentMinute / 5) * 5;
         const cycleNumber = currentHour * 12 + (minuteSlot / 5);
         
@@ -51,17 +49,13 @@ class StoreManager {
         this.game.gameData.storeInventory = [];
         const petTypes = this.game.petManager.getAllPetTypes();
         
-        // Show all pet types in store
         petTypes.forEach((pet, i) => {
             const rarity = pet.rarity.toLowerCase();
             let stockChance = this.stockProbabilities[rarity];
 
-            // Decrease chances for expensive pets
             if (pet.basePrice >= 5000000) {
-                // Heavily decrease: divide by 10 (was previously +0.5)
                 stockChance = stockChance / 10;
             } else if (pet.basePrice >= 30000) {
-                // Lightly decrease: divide by 2 (was previously +0.2)
                 stockChance = stockChance / 2;
             }
 
@@ -110,11 +104,9 @@ class StoreManager {
             return false;
         }
         
-        // Add pet to owned pets
         const newPet = this.game.petManager.createPet(petId);
         this.game.gameData.ownedPets.push(newPet);
         
-        // Reduce store quantity
         storeItem.quantity--;
         if (storeItem.quantity <= 0) {
             storeItem.inStock = false;
@@ -140,11 +132,9 @@ class StoreManager {
         const currentMinuteLastDigit = currentMinute % 10;
         
         if (currentMinuteLastDigit < 5) {
-            // Next refresh is at minute ending in 5
             const minutesUntilRefresh = 5 - currentMinuteLastDigit;
             secondsUntilNext = (minutesUntilRefresh * 60) - currentSecond;
         } else {
-            // Next refresh is at minute ending in 0 (next 10-minute mark)
             const minutesUntilRefresh = 10 - currentMinuteLastDigit;
             secondsUntilNext = (minutesUntilRefresh * 60) - currentSecond;
         }
@@ -174,11 +164,10 @@ class StoreManager {
             const itemElement = document.createElement('div');
             itemElement.className = `store-item ${!item.inStock ? 'out-of-stock' : ''}`;
 
-            // Color icons by rarity
             let iconColor = '#888';
             switch ((item.rarity||'').toLowerCase()) {
-                case 'common': iconColor = '#444'; break; // dark grey
-                case 'uncommon': iconColor = '#388e3c'; break; // darker green
+                case 'common': iconColor = '#444'; break;
+                case 'uncommon': iconColor = '#388e3c'; break;
                 case 'rare': iconColor = '#2196F3'; break;
                 case 'epic': iconColor = '#9C27B0'; break;
                 case 'legendary': iconColor = '#FFC107'; break;
@@ -186,7 +175,6 @@ class StoreManager {
                 case 'divine': iconColor = '#00B8D4'; break;
                 case 'cosmic': iconColor = '#FF5722'; break;
             }
-            // Always use a valid icon for known pets
             let iconClass = item.icon;
             if (!iconClass || !iconClass.startsWith('bi')) {
                 switch ((item.id||'').toLowerCase()) {

@@ -1,4 +1,3 @@
-// Main game state and initialization
 class PetFarmGame {
     constructor() {
         this.money = 20;
@@ -31,39 +30,30 @@ class PetFarmGame {
     }
 
     setupEventListeners() {
-        // Navigation buttons
         document.getElementById('storeBtn').addEventListener('click', () => this.showScreen('store'));
         document.getElementById('farmBtn').addEventListener('click', () => this.showScreen('farm'));
         document.getElementById('inventoryBtn').addEventListener('click', () => this.showScreen('inventory'));
         document.getElementById('utilityBtn').addEventListener('click', () => this.showScreen('utility'));
         document.getElementById('muteBtn').addEventListener('click', () => this.audioManager.toggleMute());
 
-
-
-        // Pet selection modal
         document.getElementById('closePetModal').addEventListener('click', () => {
             document.getElementById('petSelectionModal').classList.add('hidden');
         });
 
-        // Auto-save every 30 seconds
         setInterval(() => this.saveGame(), 30000);
 
-        // Save on page unload
         window.addEventListener('beforeunload', () => this.saveGame());
     }
 
     showScreen(screenName) {
-        // Hide all screens
         document.querySelectorAll('.screen').forEach(screen => {
             screen.classList.add('hidden');
         });
 
-        // Remove active class from all nav buttons
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.classList.remove('active');
         });
 
-        // Show selected screen and set active button
         if (screenName === 'store') {
             document.getElementById('storeScreen').classList.remove('hidden');
             this.storeManager.updateDisplay();
@@ -102,7 +92,6 @@ class PetFarmGame {
     updateDisplay() {
         document.getElementById('money').textContent = this.money;
 
-        // Update mute button
         const muteBtn = document.getElementById('muteBtn');
         muteBtn.textContent = this.audioManager.isMuted ? '🔇' : '🔊';
     }
@@ -114,7 +103,6 @@ class PetFarmGame {
 
         document.getElementById('notifications').appendChild(notification);
 
-        // Remove after 3 seconds
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.parentNode.removeChild(notification);
@@ -127,7 +115,7 @@ class PetFarmGame {
             this.farmManager.updatePets();
             this.storeManager.updateTimer();
             this.updateDisplay();
-        }, 1000); // Update every second
+        }, 1000);
     }
 
     saveGame() {
@@ -138,7 +126,7 @@ class PetFarmGame {
             lastSave: Date.now(),
             storeLastRefresh: this.gameData.storeLastRefresh,
             storeInventory: this.gameData.storeInventory,
-            version: '1.0' // Add version for future compatibility
+            version: '1.0'
         };
 
         try {
@@ -161,7 +149,6 @@ class PetFarmGame {
                 this.gameData.storeLastRefresh = data.storeLastRefresh || 0;
                 this.gameData.storeInventory = data.storeInventory || [];
 
-                // Calculate offline time and apply growth
                 if (data.lastSave) {
                     const offlineTime = Math.floor((Date.now() - data.lastSave) / 1000);
                     this.farmManager.applyOfflineGrowth(offlineTime);
@@ -179,15 +166,12 @@ class PetFarmGame {
     }
 }
 
-// Initialize game when page loads
 window.addEventListener('DOMContentLoaded', () => {
     window.game = new PetFarmGame();
 });
 
-// Remove inventory tab and button
 document.getElementById('inventoryBtn').style.display = 'none';
 document.getElementById('inventoryScreen').style.display = 'none';
 
-// Restore inventory tab and button if previously hidden
 document.getElementById('inventoryBtn').style.display = '';
 document.getElementById('inventoryScreen').style.display = '';

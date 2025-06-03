@@ -1,23 +1,18 @@
-// Farm management system
 class FarmManager {
     constructor(game) {
         this.game = game;
-        this.plotCount = 6; // Default number of plots
-        this.maxPlots = 10; // Maximum with expansions (6 base + 4 expansions)
+        this.plotCount = 6;
+        this.maxPlots = 10;
         this.expansionsPurchased = 0;
         this.maxExpansions = 4;
         this.initializeFarm();
     }
 
     initializeFarm() {
-        // Create farm grid
         const farmGrid = document.getElementById('farmGrid');
         farmGrid.innerHTML = '';
-
-        // Create 2x5 grid layout
         for (let i = 0; i < this.maxPlots; i++) {
             const plot = document.createElement('div');
-            
             if (i < this.plotCount) {
                 plot.className = 'farm-plot empty';
                 plot.addEventListener('click', () => this.handlePlotClick(i));
@@ -31,7 +26,6 @@ class FarmManager {
                 `;
                 plot.addEventListener('click', () => this.showExpansionBuyPrompt());
             }
-            
             plot.dataset.plotId = i;
             farmGrid.appendChild(plot);
         }
@@ -41,16 +35,13 @@ class FarmManager {
         const plot = document.querySelector(`[data-plot-id="${plotId}"]`);
 
         if (this.game.gameData.farmPets[plotId]) {
-            // Plot has a pet - show pet info or sell option
             this.showPetOptions(plotId);
         } else {
-            // Empty plot - show pet selection
             this.showPetSelection(plotId);
         }
     }
 
     showPetSelection(plotId) {
-        // Only show pets that are not on the farm AND still exist in ownedPets (in case a pet was just sold)
         const availablePets = this.game.gameData.ownedPets.filter(pet => 
             !Object.values(this.game.gameData.farmPets).some(farmPet => farmPet.id === pet.id)
         );
@@ -72,11 +63,10 @@ class FarmManager {
             const option = document.createElement('div');
             option.className = 'pet-option';
 
-            // Render icon as a Bootstrap icon, colored by rarity
             let iconColor = '#888';
             switch ((pet.rarity||'').toLowerCase()) {
-                case 'common': iconColor = '#444'; break; // dark grey
-                case 'uncommon': iconColor = '#388e3c'; break; // darker green
+                case 'common': iconColor = '#444'; break;
+                case 'uncommon': iconColor = '#388e3c'; break;
                 case 'rare': iconColor = '#2196F3'; break;
                 case 'epic': iconColor = '#9C27B0'; break;
                 case 'legendary': iconColor = '#FFC107'; break;
@@ -106,7 +96,6 @@ class FarmManager {
     }
 
     placePet(plotId, pet) {
-        // Remove from ownedPets when placing on the farm
         this.game.gameData.ownedPets = this.game.gameData.ownedPets.filter(p => p.id !== pet.id);
         this.game.gameData.farmPets[plotId] = pet;
         pet.placedAt = Date.now();
@@ -152,18 +141,14 @@ class FarmManager {
     }
 
     generateExpansionCost() {
-        // Generate a consistent price per user using a seed
         if (!this.userExpansionCost) {
-            // Create a simple seed from user's initial money and some constant
             const userSeed = this.game.gameData.money * 13 + 42;
             const seededRandom = (seed) => {
                 const x = Math.sin(seed) * 10000;
                 return x - Math.floor(x);
             };
-            
-            // Generate random price between 5M-45M, consistent for this user
             const rand = seededRandom(userSeed);
-            const exponentialRand = Math.pow(rand, 0.4); // Makes higher values more likely
+            const exponentialRand = Math.pow(rand, 0.4);
             this.userExpansionCost = Math.floor(5000000 + (exponentialRand * 40000000));
         }
         
@@ -174,7 +159,7 @@ class FarmManager {
         if (this.plotCount < this.maxPlots && this.expansionsPurchased < this.maxExpansions) {
             this.plotCount++;
             this.expansionsPurchased++;
-            this.initializeFarm(); // Regenerate farm grid
+            this.initializeFarm();
             this.updateDisplay();
         }
     }
@@ -191,7 +176,6 @@ class FarmManager {
 
         this.game.addMoney(petInfo.value);
         delete this.game.gameData.farmPets[plotId];
-        // Remove from ownedPets as well
         if (this.game.petManager.removePetFromOwned) {
             this.game.petManager.removePetFromOwned(pet.id);
         } else {
@@ -219,7 +203,6 @@ class FarmManager {
             pet.lastUpdate = currentTime;
         });
 
-        // Update display if on farm screen
         if (this.game.currentScreen === 'farm') {
             this.updateDisplay();
         }
@@ -228,10 +211,9 @@ class FarmManager {
     applyOfflineGrowth(offlineSeconds) {
         console.log(`Applying ${offlineSeconds} seconds of offline growth`);
 
-        // Make offline growth 5x slower (divide offlineSeconds by 5)
         const adjustedOfflineSeconds = offlineSeconds / 1;
         Object.values(this.game.gameData.farmPets).forEach(pet => {
-            this.game.petManager.updatePetAge(pet, adjustedOfflineSeconds * 1.5); // Increase growth speed by 1.5x
+            this.game.petManager.updatePetAge(pet, adjustedOfflineSeconds * 1.5);
         });
 
         if (offlineSeconds > 60) {
@@ -270,7 +252,6 @@ class FarmManager {
                 case 'divine': iconColor = '#00B8D4'; break;
                 case 'cosmic': iconColor = '#FF5722'; break;
             }
-            // Fallback for missing/placeholder icons
             let iconHtml = petInfo.icon && petInfo.icon.startsWith('bi')
                 ? `<i class="${petInfo.icon}" style="color:${iconColor}"></i>`
                 : (() => {
@@ -297,13 +278,11 @@ class FarmManager {
             `;
         });
 
-        // Update empty plots
         for (let i = 0; i < this.plotCount; i++) {
             if (!this.game.gameData.farmPets[i]) {
                 const plot = document.querySelector(`[data-plot-id="${i}"]`);
                 if (plot) {
                     plot.className = 'farm-plot empty';
-                    // Show a placeholder icon for empty plots
                     plot.innerHTML = `<div class="pet-sprite d-flex justify-content-center align-items-center" style="font-size:2.5rem;"><i class='bi bi-plus-circle' style='color:#bbb'></i></div>`;
                 }
             }
