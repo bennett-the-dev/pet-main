@@ -228,8 +228,10 @@ class FarmManager {
     applyOfflineGrowth(offlineSeconds) {
         console.log(`Applying ${offlineSeconds} seconds of offline growth`);
 
+        // Make offline growth 5x slower (divide offlineSeconds by 5)
+        const adjustedOfflineSeconds = offlineSeconds / 5;
         Object.values(this.game.gameData.farmPets).forEach(pet => {
-            this.game.petManager.updatePetAge(pet, offlineSeconds);
+            this.game.petManager.updatePetAge(pet, adjustedOfflineSeconds);
         });
 
         if (offlineSeconds > 60) {
