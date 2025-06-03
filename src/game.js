@@ -1,1 +1,177 @@
-const _0x12febe=_0x2fe7;function _0x2fe7(_0x18c7dd,_0xcf81e7){const _0xc65cd4=_0xc65c();return _0x2fe7=function(_0x2fe7cc,_0x136f17){_0x2fe7cc=_0x2fe7cc-0xb1;let _0x47828e=_0xc65cd4[_0x2fe7cc];return _0x47828e;},_0x2fe7(_0x18c7dd,_0xcf81e7);}(function(_0x58ff0a,_0x56a1a3){const _0x16df58=_0x2fe7,_0x462569=_0x58ff0a();while(!![]){try{const _0x24290a=-parseInt(_0x16df58(0xd8))/0x1+-parseInt(_0x16df58(0xed))/0x2+-parseInt(_0x16df58(0xc7))/0x3+parseInt(_0x16df58(0xd1))/0x4+parseInt(_0x16df58(0xb1))/0x5*(parseInt(_0x16df58(0xf6))/0x6)+parseInt(_0x16df58(0x103))/0x7+parseInt(_0x16df58(0xd3))/0x8*(parseInt(_0x16df58(0xcb))/0x9);if(_0x24290a===_0x56a1a3)break;else _0x462569['push'](_0x462569['shift']());}catch(_0x4ea75a){_0x462569['push'](_0x462569['shift']());}}}(_0xc65c,0xe06d9));class PetFarmGame{constructor(){const _0x4e36be=_0x2fe7;this[_0x4e36be(0xfb)]=0x14,this[_0x4e36be(0xf0)]=_0x4e36be(0xe4),this['gameData']={'money':this['money'],'ownedPets':[],'farmPets':{},'lastSave':Date[_0x4e36be(0xd9)](),'storeLastRefresh':0x0,'storeInventory':[]},this[_0x4e36be(0xc1)]=new AudioManager(),this['petManager']=new PetManager(),this[_0x4e36be(0xd7)]=new FarmManager(this),this[_0x4e36be(0x102)]=new InventoryManager(this),this[_0x4e36be(0xe3)]=new StoreManager(this),this[_0x4e36be(0xcd)]=new UtilityStoreManager(this),this['init']();}[_0x12febe(0xf2)](){const _0x278473=_0x12febe;this[_0x278473(0xe5)](),this[_0x278473(0xb5)](),this['startGameLoop'](),this[_0x278473(0xff)](),this[_0x278473(0xb4)](_0x278473(0xe4));}[_0x12febe(0xb5)](){const _0x9df8e9=_0x12febe;document[_0x9df8e9(0xf9)](_0x9df8e9(0xba))[_0x9df8e9(0xeb)](_0x9df8e9(0xfd),()=>this[_0x9df8e9(0xb4)](_0x9df8e9(0x101))),document[_0x9df8e9(0xf9)]('farmBtn')[_0x9df8e9(0xeb)]('click',()=>this[_0x9df8e9(0xb4)](_0x9df8e9(0xe4))),document[_0x9df8e9(0xf9)](_0x9df8e9(0xd5))['addEventListener']('click',()=>this['showScreen'](_0x9df8e9(0xce))),document[_0x9df8e9(0xf9)](_0x9df8e9(0xf8))[_0x9df8e9(0xeb)](_0x9df8e9(0xfd),()=>this[_0x9df8e9(0xb4)](_0x9df8e9(0x107))),document[_0x9df8e9(0xf9)](_0x9df8e9(0xc8))[_0x9df8e9(0xeb)](_0x9df8e9(0xfd),()=>this[_0x9df8e9(0xc1)][_0x9df8e9(0xb3)]()),document[_0x9df8e9(0xf9)](_0x9df8e9(0xee))[_0x9df8e9(0xeb)](_0x9df8e9(0xfd),()=>{const _0x24c0cf=_0x9df8e9;document[_0x24c0cf(0xf9)](_0x24c0cf(0xb9))['classList']['add']('hidden');}),setInterval(()=>this['saveGame'](),0x7530),window[_0x9df8e9(0xeb)]('beforeunload',()=>this[_0x9df8e9(0xf1)]());}[_0x12febe(0xb4)](_0xcdf224){const _0x1cd206=_0x12febe;document[_0x1cd206(0xfc)]('.screen')[_0x1cd206(0x104)](_0x4a9171=>{const _0x4dff30=_0x1cd206;_0x4a9171['classList']['add'](_0x4dff30(0xd6));}),document[_0x1cd206(0xfc)](_0x1cd206(0xc9))[_0x1cd206(0x104)](_0x3d28a5=>{const _0x29265a=_0x1cd206;_0x3d28a5[_0x29265a(0xdd)]['remove'](_0x29265a(0xfe));});if(_0xcdf224===_0x1cd206(0x101))document['getElementById'](_0x1cd206(0xbe))[_0x1cd206(0xdd)]['remove'](_0x1cd206(0xd6)),this['storeManager'][_0x1cd206(0xff)](),document['getElementById'](_0x1cd206(0xba))[_0x1cd206(0xdd)]['add'](_0x1cd206(0xfe));else{if(_0xcdf224===_0x1cd206(0xe4))document[_0x1cd206(0xf9)](_0x1cd206(0xd4))[_0x1cd206(0xdd)]['remove'](_0x1cd206(0xd6)),this['farmManager']['updateDisplay'](),document[_0x1cd206(0xf9)](_0x1cd206(0xd0))[_0x1cd206(0xdd)]['add'](_0x1cd206(0xfe));else{if(_0xcdf224===_0x1cd206(0xce))document['getElementById'](_0x1cd206(0xbc))[_0x1cd206(0xdd)]['remove'](_0x1cd206(0xd6)),this['inventoryManager'][_0x1cd206(0xff)](),document[_0x1cd206(0xf9)]('inventoryBtn')['classList'][_0x1cd206(0xe9)](_0x1cd206(0xfe));else _0xcdf224===_0x1cd206(0x107)&&(this['utilityStoreManager'][_0x1cd206(0xfa)](),document[_0x1cd206(0xf9)](_0x1cd206(0xf8))[_0x1cd206(0xdd)][_0x1cd206(0xe9)](_0x1cd206(0xfe)));}}this[_0x1cd206(0xf0)]=_0xcdf224;}[_0x12febe(0xea)](_0x39d8c8){const _0x55696a=_0x12febe;this[_0x55696a(0xfb)]+=_0x39d8c8,this[_0x55696a(0xff)](),this['audioManager'][_0x55696a(0xc2)]();}[_0x12febe(0x108)](_0x11861f){const _0x27b365=_0x12febe;if(this[_0x27b365(0xfb)]>=_0x11861f)return this[_0x27b365(0xfb)]-=_0x11861f,this[_0x27b365(0xff)](),!![];return![];}[_0x12febe(0xff)](){const _0x493597=_0x12febe;document[_0x493597(0xf9)](_0x493597(0xfb))[_0x493597(0xf4)]=this[_0x493597(0xfb)];const _0x25ce25=document[_0x493597(0xf9)](_0x493597(0xc8));_0x25ce25[_0x493597(0xf4)]=this[_0x493597(0xc1)][_0x493597(0xe1)]?'🔇':'🔊';}[_0x12febe(0xe2)](_0x23163b,_0x3100ae=_0x12febe(0xef)){const _0x4d265d=_0x12febe,_0x3caa8f=document['createElement'](_0x4d265d(0xca));_0x3caa8f[_0x4d265d(0xc3)]='notification\x20'+_0x3100ae,_0x3caa8f[_0x4d265d(0xf4)]=_0x23163b,document[_0x4d265d(0xf9)]('notifications')[_0x4d265d(0xec)](_0x3caa8f),setTimeout(()=>{const _0x234457=_0x4d265d;_0x3caa8f[_0x234457(0x109)]&&_0x3caa8f['parentNode']['removeChild'](_0x3caa8f);},0xbb8);}[_0x12febe(0xe6)](){setInterval(()=>{const _0x403816=_0x2fe7;this[_0x403816(0xd7)][_0x403816(0xc4)](),this[_0x403816(0xe3)]['updateTimer'](),this[_0x403816(0xff)]();},0x3e8);}[_0x12febe(0xf1)](){const _0x3a6ea0=_0x12febe,_0x5af619={'money':this[_0x3a6ea0(0xfb)],'ownedPets':this[_0x3a6ea0(0xb7)]['ownedPets'],'farmPets':this[_0x3a6ea0(0xb7)][_0x3a6ea0(0xe7)],'lastSave':Date[_0x3a6ea0(0xd9)](),'storeLastRefresh':this[_0x3a6ea0(0xb7)][_0x3a6ea0(0xb8)],'storeInventory':this[_0x3a6ea0(0xb7)]['storeInventory'],'version':_0x3a6ea0(0xf3)};try{localStorage[_0x3a6ea0(0xcc)](_0x3a6ea0(0xc6),JSON[_0x3a6ea0(0xda)](_0x5af619)),console[_0x3a6ea0(0xc0)](_0x3a6ea0(0xb6));}catch(_0x264ebc){console['error'](_0x3a6ea0(0xdf),_0x264ebc),this[_0x3a6ea0(0xe2)](_0x3a6ea0(0xf5),_0x3a6ea0(0xd2));}}[_0x12febe(0xe5)](){const _0x191e52=_0x12febe,_0x3030fa=localStorage[_0x191e52(0xc5)](_0x191e52(0xc6));if(_0x3030fa)try{const _0x2609da=JSON[_0x191e52(0xde)](_0x3030fa);this[_0x191e52(0xfb)]=_0x2609da[_0x191e52(0xfb)]||0x14,this[_0x191e52(0xb7)][_0x191e52(0x10a)]=_0x2609da[_0x191e52(0x10a)]||[],this[_0x191e52(0xb7)][_0x191e52(0xe7)]=_0x2609da[_0x191e52(0xe7)]||{},this['gameData'][_0x191e52(0xb8)]=_0x2609da[_0x191e52(0xb8)]||0x0,this[_0x191e52(0xb7)][_0x191e52(0xcf)]=_0x2609da['storeInventory']||[];if(_0x2609da[_0x191e52(0xe8)]){const _0x171bf3=Math[_0x191e52(0xf7)]((Date[_0x191e52(0xd9)]()-_0x2609da['lastSave'])/0x3e8);this[_0x191e52(0xd7)]['applyOfflineGrowth'](_0x171bf3);}console[_0x191e52(0xc0)](_0x191e52(0xdc)),this['showNotification'](_0x191e52(0x106),_0x191e52(0xef));}catch(_0x9ad290){console[_0x191e52(0xd2)](_0x191e52(0xb2),_0x9ad290),this[_0x191e52(0xe2)]('Failed\x20to\x20load\x20save\x20data.\x20Starting\x20fresh.',_0x191e52(0x105));}else console[_0x191e52(0xc0)](_0x191e52(0xe0));}}window['addEventListener'](_0x12febe(0xbf),()=>{const _0x5539af=_0x12febe;window[_0x5539af(0xbd)]=new PetFarmGame();}),document[_0x12febe(0xf9)]('inventoryBtn')['style'][_0x12febe(0x100)]=_0x12febe(0xbb),document['getElementById'](_0x12febe(0xbc))[_0x12febe(0xdb)]['display']=_0x12febe(0xbb),document['getElementById']('inventoryBtn')[_0x12febe(0xdb)][_0x12febe(0x100)]='',document[_0x12febe(0xf9)]('inventoryScreen')[_0x12febe(0xdb)][_0x12febe(0x100)]='';function _0xc65c(){const _0x51ea44=['Game\x20saved\x20successfully','gameData','storeLastRefresh','petSelectionModal','storeBtn','none','inventoryScreen','game','storeScreen','DOMContentLoaded','log','audioManager','playSuccess','className','updatePets','getItem','petFarmSave','2414202FjSRJw','muteBtn','.nav-btn','div','495fVtlNM','setItem','utilityStoreManager','inventory','storeInventory','farmBtn','4943832NseNPp','error','55712uTqRph','farmScreen','inventoryBtn','hidden','farmManager','754317otrwJd','now','stringify','style','Game\x20loaded\x20successfully','classList','parse','Failed\x20to\x20save\x20game:','No\x20save\x20data\x20found,\x20starting\x20new\x20game','isMuted','showNotification','storeManager','farm','loadGame','startGameLoop','farmPets','lastSave','add','addMoney','addEventListener','appendChild','1234396rVrnzL','closePetModal','success','currentScreen','saveGame','init','1.0','textContent','Failed\x20to\x20save\x20game!','732fFvvAT','floor','utilityBtn','getElementById','showUtilityStore','money','querySelectorAll','click','active','updateDisplay','display','store','inventoryManager','3666810YSoWza','forEach','warning','Game\x20loaded!','utility','spendMoney','parentNode','ownedPets','39045mKSOLu','Failed\x20to\x20load\x20save\x20data:','toggleMute','showScreen','setupEventListeners'];_0xc65c=function(){return _0x51ea44;};return _0xc65c();}
+class PetFarmGame {
+    constructor() {
+        this.money = 20;
+        this.currentScreen = 'farm';
+        this.gameData = {
+            money: this.money,
+            ownedPets: [],
+            farmPets: {},
+            lastSave: Date.now(),
+            storeLastRefresh: 0,
+            storeInventory: []
+        };
+
+        this.audioManager = new AudioManager();
+        this.petManager = new PetManager();
+        this.farmManager = new FarmManager(this);
+        this.inventoryManager = new InventoryManager(this);
+        this.storeManager = new StoreManager(this);
+        this.utilityStoreManager = new UtilityStoreManager(this);
+
+        this.init();
+    }
+
+    init() {
+        this.loadGame();
+        this.setupEventListeners();
+        this.startGameLoop();
+        this.updateDisplay();
+        this.showScreen('farm');
+    }
+
+    setupEventListeners() {
+        document.getElementById('storeBtn').addEventListener('click', () => this.showScreen('store'));
+        document.getElementById('farmBtn').addEventListener('click', () => this.showScreen('farm'));
+        document.getElementById('inventoryBtn').addEventListener('click', () => this.showScreen('inventory'));
+        document.getElementById('utilityBtn').addEventListener('click', () => this.showScreen('utility'));
+        document.getElementById('muteBtn').addEventListener('click', () => this.audioManager.toggleMute());
+
+        document.getElementById('closePetModal').addEventListener('click', () => {
+            document.getElementById('petSelectionModal').classList.add('hidden');
+        });
+
+        setInterval(() => this.saveGame(), 30000);
+
+        window.addEventListener('beforeunload', () => this.saveGame());
+    }
+
+    showScreen(screenName) {
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.add('hidden');
+        });
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        if (screenName === 'store') {
+            document.getElementById('storeScreen').classList.remove('hidden');
+            this.storeManager.updateDisplay();
+            document.getElementById('storeBtn').classList.add('active');
+        } else if (screenName === 'farm') {
+            document.getElementById('farmScreen').classList.remove('hidden');
+            this.farmManager.updateDisplay();
+            document.getElementById('farmBtn').classList.add('active');
+        } else if (screenName === 'inventory') {
+            document.getElementById('inventoryScreen').classList.remove('hidden');
+            this.inventoryManager.updateDisplay();
+            document.getElementById('inventoryBtn').classList.add('active');
+        } else if (screenName === 'utility') {
+            this.utilityStoreManager.showUtilityStore();
+            document.getElementById('utilityBtn').classList.add('active');
+        }
+
+        this.currentScreen = screenName;
+    }
+
+    addMoney(amount) {
+        this.money += amount;
+        this.updateDisplay();
+        this.audioManager.playSuccess();
+    }
+
+    spendMoney(amount) {
+        if (this.money >= amount) {
+            this.money -= amount;
+            this.updateDisplay();
+            return true;
+        }
+        return false;
+    }
+
+    updateDisplay() {
+        document.getElementById('money').textContent = this.money;
+
+        const muteBtn = document.getElementById('muteBtn');
+        muteBtn.textContent = this.audioManager.isMuted ? '🔇' : '🔊';
+    }
+
+    showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+
+        document.getElementById('notifications').appendChild(notification);
+
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 3000);
+    }
+
+    startGameLoop() {
+        setInterval(() => {
+            this.farmManager.updatePets();
+            this.storeManager.updateTimer();
+            this.updateDisplay();
+        }, 1000);
+    }
+
+    saveGame() {
+        const saveData = {
+            money: this.money,
+            ownedPets: this.gameData.ownedPets,
+            farmPets: this.gameData.farmPets,
+            lastSave: Date.now(),
+            storeLastRefresh: this.gameData.storeLastRefresh,
+            storeInventory: this.gameData.storeInventory,
+            version: '1.0'
+        };
+
+        try {
+            localStorage.setItem('petFarmSave', JSON.stringify(saveData));
+            console.log('Game saved successfully');
+        } catch (error) {
+            console.error('Failed to save game:', error);
+            this.showNotification('Failed to save game!', 'error');
+        }
+    }
+
+    loadGame() {
+        const savedData = localStorage.getItem('petFarmSave');
+        if (savedData) {
+            try {
+                const data = JSON.parse(savedData);
+                this.money = data.money || 20;
+                this.gameData.ownedPets = data.ownedPets || [];
+                this.gameData.farmPets = data.farmPets || {};
+                this.gameData.storeLastRefresh = data.storeLastRefresh || 0;
+                this.gameData.storeInventory = data.storeInventory || [];
+
+                if (data.lastSave) {
+                    const offlineTime = Math.floor((Date.now() - data.lastSave) / 1000);
+                    this.farmManager.applyOfflineGrowth(offlineTime);
+                }
+                
+                console.log('Game loaded successfully');
+                this.showNotification('Game loaded!', 'success');
+            } catch (e) {
+                console.error('Failed to load save data:', e);
+                this.showNotification('Failed to load save data. Starting fresh.', 'warning');
+            }
+        } else {
+            console.log('No save data found, starting new game');
+        }
+    }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    window.game = new PetFarmGame();
+});
+
+document.getElementById('inventoryBtn').style.display = 'none';
+document.getElementById('inventoryScreen').style.display = 'none';
+
+document.getElementById('inventoryBtn').style.display = '';
+document.getElementById('inventoryScreen').style.display = '';
