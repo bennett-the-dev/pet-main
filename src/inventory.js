@@ -1,1 +1,73 @@
-(function(_0x5b7b7c,_0x3d342d){const _0xaf9abe=_0x1ff2,_0x4efeb7=_0x5b7b7c();while(!![]){try{const _0x413cab=parseInt(_0xaf9abe(0x189))/0x1+parseInt(_0xaf9abe(0x163))/0x2+-parseInt(_0xaf9abe(0x16b))/0x3+-parseInt(_0xaf9abe(0x161))/0x4*(-parseInt(_0xaf9abe(0x165))/0x5)+-parseInt(_0xaf9abe(0x184))/0x6*(parseInt(_0xaf9abe(0x156))/0x7)+parseInt(_0xaf9abe(0x15c))/0x8+-parseInt(_0xaf9abe(0x150))/0x9;if(_0x413cab===_0x3d342d)break;else _0x4efeb7['push'](_0x4efeb7['shift']());}catch(_0x178dcf){_0x4efeb7['push'](_0x4efeb7['shift']());}}}(_0x336f,0x36e7f));class InventoryManager{constructor(_0x584f4e){const _0x262505=_0x1ff2;this[_0x262505(0x16f)]=_0x584f4e;}['updateDisplay'](){const _0x27a8f1=_0x1ff2,_0x16a440=document[_0x27a8f1(0x15d)](_0x27a8f1(0x17c));if(!_0x16a440)return;_0x16a440[_0x27a8f1(0x157)]='';if(this[_0x27a8f1(0x16f)][_0x27a8f1(0x177)][_0x27a8f1(0x15e)][_0x27a8f1(0x170)]===0x0){_0x16a440[_0x27a8f1(0x157)]=_0x27a8f1(0x188);return;}this[_0x27a8f1(0x16f)][_0x27a8f1(0x177)][_0x27a8f1(0x15e)]['forEach'](_0x226116=>{const _0x8f5e5c=_0x27a8f1,_0x26e741=this[_0x8f5e5c(0x16f)][_0x8f5e5c(0x18b)][_0x8f5e5c(0x17d)](_0x226116[_0x8f5e5c(0x187)]);if(!_0x26e741)return;const _0x5e5e2a=Object[_0x8f5e5c(0x180)](this[_0x8f5e5c(0x16f)]['gameData'][_0x8f5e5c(0x158)])[_0x8f5e5c(0x17b)](_0x20c0ad=>_0x20c0ad['id']===_0x226116['id']),_0x49c3ec=document[_0x8f5e5c(0x160)](_0x8f5e5c(0x15b));_0x49c3ec[_0x8f5e5c(0x155)]='inventory-pet';let _0x592480='';if(_0x226116['isRainbow'])_0x592480=_0x8f5e5c(0x169);else _0x226116[_0x8f5e5c(0x159)]&&(_0x592480=_0x8f5e5c(0x162));let _0x3a1367=_0x8f5e5c(0x173);switch((_0x26e741[_0x8f5e5c(0x174)]||'')[_0x8f5e5c(0x192)]()){case _0x8f5e5c(0x18d):_0x3a1367=_0x8f5e5c(0x167);break;case _0x8f5e5c(0x166):_0x3a1367=_0x8f5e5c(0x15a);break;case'rare':_0x3a1367=_0x8f5e5c(0x154);break;case _0x8f5e5c(0x17a):_0x3a1367=_0x8f5e5c(0x16e);break;case _0x8f5e5c(0x152):_0x3a1367=_0x8f5e5c(0x191);break;case _0x8f5e5c(0x176):_0x3a1367=_0x8f5e5c(0x190);break;case _0x8f5e5c(0x16d):_0x3a1367=_0x8f5e5c(0x18f);break;case _0x8f5e5c(0x153):_0x3a1367='#FF5722';break;}let _0x1b342b=_0x26e741[_0x8f5e5c(0x175)]&&_0x26e741['icon']['startsWith']('bi')?_0x8f5e5c(0x171)+_0x26e741[_0x8f5e5c(0x175)]+_0x8f5e5c(0x17f)+_0x3a1367+_0x8f5e5c(0x178):((()=>{const _0x16fa22=_0x8f5e5c;switch((_0x26e741['id']||_0x26e741[_0x16fa22(0x187)]||'')[_0x16fa22(0x192)]()){case'cat':return'<i\x20class=\x27bi\x20bi-emoji-smile\x27\x20style=\x27color:'+_0x3a1367+_0x16fa22(0x178);case _0x16fa22(0x15f):return _0x16fa22(0x172)+_0x3a1367+';font-size:2.5rem;\x27></i>';case _0x16fa22(0x185):return _0x16fa22(0x183)+_0x3a1367+';font-size:2.5rem;\x27></i>';case _0x16fa22(0x164):return'<i\x20class=\x27bi\x20bi-hourglass-split\x27\x20style=\x27color:'+_0x3a1367+_0x16fa22(0x178);case'throne':return _0x16fa22(0x16a)+_0x3a1367+_0x16fa22(0x178);case _0x16fa22(0x151):return _0x16fa22(0x182)+_0x3a1367+_0x16fa22(0x178);case _0x16fa22(0x179):return _0x16fa22(0x182)+_0x3a1367+_0x16fa22(0x178);default:return'<i\x20class=\x27bi\x20bi-question-circle\x27\x20style=\x27color:#888;font-size:2.5rem;\x27></i>';}})());_0x49c3ec[_0x8f5e5c(0x157)]=_0x8f5e5c(0x168)+_0x1b342b+_0x8f5e5c(0x18e)+_0x26e741[_0x8f5e5c(0x181)]+_0x8f5e5c(0x18c)+_0x26e741[_0x8f5e5c(0x174)]+_0x8f5e5c(0x186)+(_0x5e5e2a?_0x8f5e5c(0x17e):'In\x20Storage')+_0x8f5e5c(0x18a),_0x16a440[_0x8f5e5c(0x16c)](_0x49c3ec);});}}function _0x1ff2(_0x5e6ec5,_0x1d8480){const _0x336ff7=_0x336f();return _0x1ff2=function(_0x1ff2d7,_0x147905){_0x1ff2d7=_0x1ff2d7-0x150;let _0x1bb12c=_0x336ff7[_0x1ff2d7];return _0x1bb12c;},_0x1ff2(_0x5e6ec5,_0x1d8480);}function _0x336f(){const _0x5984e2=['fish','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27pet-status\x27>','type','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20style=\x22grid-column:\x201\x20/\x20-1;\x20text-align:\x20center;\x20padding:\x2040px;\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h3>No\x20pets\x20in\x20inventory</h3>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>Buy\x20pets\x20from\x20the\x20store\x20to\x20add\x20them\x20to\x20your\x20inventory!</p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','54175bvNlkp','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','petManager','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27pet-rarity\x27>','common','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27pet-name\x27>','#00B8D4','#E91E63','#FFC107','toLowerCase','914130PccvGj','angel','legendary','cosmic','#2196F3','className','1141ZdNxDS','innerHTML','farmPets','isGolden','#4CAF50','div','419656bijexI','getElementById','ownedPets','dog','createElement','137668iuTmsj','pet-golden','825470nwciJy','ancient','55FhZJQy','uncommon','#8BC34A','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x27pet-icon\x20d-flex\x20justify-content-center\x20align-items-center\x20mb-2\x27>','pet-rainbow','<i\x20class=\x27bi\x20bi-gem\x27\x20style=\x27color:','881700GXMTfq','appendChild','divine','#9C27B0','game','length','<i\x20class=\x27','<i\x20class=\x27bi\x20bi-emoji-laughing\x27\x20style=\x27color:','#888','rarity','icon','mythical','gameData',';font-size:2.5rem;\x27></i>','sun','epic','some','inventoryContainer','getPetTypeById','On\x20Farm','\x27\x20style=\x27color:','values','name','<i\x20class=\x27bi\x20bi-sun\x27\x20style=\x27color:','<i\x20class=\x27bi\x20bi-fish\x27\x20style=\x27color:','10218JNrXbH'];_0x336f=function(){return _0x5984e2;};return _0x336f();}
+class InventoryManager {
+    constructor(game) {
+        this.game = game;
+    }
+
+    updateDisplay() {
+        const inventoryContainer = document.getElementById('inventoryContainer');
+        if (!inventoryContainer) return;
+
+        inventoryContainer.innerHTML = '';
+
+        if (this.game.gameData.ownedPets.length === 0) {
+            inventoryContainer.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                    <h3>No pets in inventory</h3>
+                    <p>Buy pets from the store to add them to your inventory!</p>
+                </div>
+            `;
+            return;
+        }
+
+        this.game.gameData.ownedPets.forEach(pet => {
+            const petType = this.game.petManager.getPetTypeById(pet.type);
+            if (!petType) return;
+
+            const isOnFarm = Object.values(this.game.gameData.farmPets).some(farmPet => farmPet.id === pet.id);
+
+            const petElement = document.createElement('div');
+            petElement.className = 'inventory-pet';
+
+            let specialClass = '';
+            if (pet.isRainbow) {
+                specialClass = 'pet-rainbow';
+            } else if (pet.isGolden) {
+                specialClass = 'pet-golden';
+            }
+
+            let iconColor = '#888';
+            switch ((petType.rarity||'').toLowerCase()) {
+                case 'common': iconColor = '#8BC34A'; break;
+                case 'uncommon': iconColor = '#4CAF50'; break;
+                case 'rare': iconColor = '#2196F3'; break;
+                case 'epic': iconColor = '#9C27B0'; break;
+                case 'legendary': iconColor = '#FFC107'; break;
+                case 'mythical': iconColor = '#E91E63'; break;
+                case 'divine': iconColor = '#00B8D4'; break;
+                case 'cosmic': iconColor = '#FF5722'; break;
+            }
+            let iconHtml = petType.icon && petType.icon.startsWith('bi')
+                ? `<i class='${petType.icon}' style='color:${iconColor};font-size:2.5rem;'></i>`
+                : (() => {
+                    switch ((petType.id||petType.type||'').toLowerCase()) {
+                        case 'cat': return `<i class='bi bi-emoji-smile' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'dog': return `<i class='bi bi-emoji-laughing' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'fish': return `<i class='bi bi-fish' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'ancient': return `<i class='bi bi-hourglass-split' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'throne': return `<i class='bi bi-gem' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'angel': return `<i class='bi bi-sun' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        case 'sun': return `<i class='bi bi-sun' style='color:${iconColor};font-size:2.5rem;'></i>`;
+                        default: return `<i class='bi bi-question-circle' style='color:#888;font-size:2.5rem;'></i>`;
+                    }
+                })();
+            petElement.innerHTML = `
+                <div class='pet-icon d-flex justify-content-center align-items-center mb-2'>${iconHtml}</div>
+                <div class='pet-name'>${petType.name}</div>
+                <div class='pet-rarity'>${petType.rarity}</div>
+                <div class='pet-status'>${isOnFarm ? 'On Farm' : 'In Storage'}</div>
+            `;
+
+            inventoryContainer.appendChild(petElement);
+        });
+    }
+}
