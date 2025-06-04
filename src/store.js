@@ -21,9 +21,9 @@ class StoreManager {
             rare: 1.0,
             epic: 0.85,
             legendary: 0.6,
-            mythical: 0.15,
-            divine: 0.1,
-            cosmic: 0.01
+            mythical: 0.15 * 4 / 3, 
+            divine: 0.1 * 4 / 3,    
+            cosmic: 0.01 * 4 / 3    
         };
         
         this.initialize();

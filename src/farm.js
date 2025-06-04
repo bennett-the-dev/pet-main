@@ -213,7 +213,8 @@ class FarmManager {
 
         const adjustedOfflineSeconds = offlineSeconds / 1;
         Object.values(this.game.gameData.farmPets).forEach(pet => {
-            this.game.petManager.updatePetAge(pet, adjustedOfflineSeconds * 1.5);
+            
+            this.game.petManager.updatePetAge(pet, adjustedOfflineSeconds * 1.5, true);
         });
 
         if (offlineSeconds > 60) {

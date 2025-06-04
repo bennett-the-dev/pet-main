@@ -157,7 +157,7 @@ class PetManager {
         return Math.floor(baseValue);
     }
     
-    updatePetAge(pet, secondsElapsed) {
+    updatePetAge(pet, secondsElapsed, isOffline = false) {
         const petType = this.getPetTypeById(pet.type);
         if (!petType) return;
         
@@ -171,10 +171,19 @@ class PetManager {
         const agingSlowdown = Math.pow(1.5, currentYear);
         const adjustedGrowthTime = (petType.growthTime * agingSlowdown) * 0.2;
         const ageGrowthRate = 1 / adjustedGrowthTime;
-        const ageIncrease = buffedSecondsElapsed * ageGrowthRate;
+        let ageIncrease = buffedSecondsElapsed * ageGrowthRate;
+
+        if (isOffline) {
+            // Limit to 10 levels max
+            const maxAge = Math.floor(pet.age) + 10;
+            if (pet.age + ageIncrease > maxAge) {
+                ageIncrease = maxAge - pet.age;
+                if (ageIncrease < 0) ageIncrease = 0;
+            }
+        }
         pet.age += ageIncrease;
-        
-        if (!pet.isRainbow && !pet.isGolden) {
+
+        if (!pet.isRainbow && !pet.isGolden && !isOffline) {
             if (Math.random() < (secondsElapsed / 60) / 750) {
                 pet.isRainbow = true;
                 return 'rainbow';
